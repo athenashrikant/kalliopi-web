@@ -273,6 +273,35 @@ const Team = () => {
   );
 };
 
+const DownloadLink = () => {
+  const fileUrl =
+    "https://github.com/athenashrikant/kalliopi-web/releases/download/initial/application-dc91b48c-ed6a-4797-acbe-59e3f995d620.apk"; // Replace with your file link
+
+  const handleDownload = (event) => {
+    event.preventDefault(); // Prevent default anchor behavior
+
+    const link = document.createElement("a");
+    link.href = fileUrl;
+    link.download = "earwise.apk"; // Specify the filename
+    link.target = "_blank"; // Opens in a new tab or background
+    document.body.appendChild(link); // Append to the document
+    link.click(); // Programmatically click the link
+    document.body.removeChild(link); // Remove the link after download
+  };
+
+  return (
+    <div>
+      <a
+        href={fileUrl} // This is still needed for accessibility
+        onClick={handleDownload} // Handle the click event
+        className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 capitalize"
+      >
+        Get Kalliopi now
+      </a>
+    </div>
+  );
+};
+
 const CTA = () => {
   return (
     <>
@@ -291,12 +320,7 @@ const CTA = () => {
           </p>
 
           <div className="inline-flex w-full mt-6 sm:w-auto">
-            <a
-              href="#"
-              className="inline-flex items-center justify-center w-full px-6 py-2 text-white duration-300 bg-blue-600 rounded-lg hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
-            >
-              Sign Up
-            </a>
+            <DownloadLink />
           </div>
         </div>
       </section>
@@ -461,17 +485,21 @@ const Features = () => {
 const Hero = () => {
   return (
     <>
-    <header className="bg-white dark:bg-gray-900">
-    <nav x-data="{ isOpen: false }" className="px-6 py-4 shadow">
-        <div className="lg:items-center lg:justify-between lg:flex">
+      <header className="bg-white dark:bg-gray-900">
+        <nav x-data="{ isOpen: false }" className="px-6 py-4 shadow">
+          <div className="lg:items-center lg:justify-between lg:flex">
             <div className="flex items-center justify-between">
-                <a href="#" className="mx-auto ">
-                    <img className="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="" />
-                </a>
+              <a href="#" className="mx-auto ">
+                <img
+                  className="w-auto h-6 sm:h-7"
+                  src="https://merakiui.com/images/full-logo.svg"
+                  alt=""
+                />
+              </a>
 
-                {/* <!-- Mobile menu button --> */}
-                <div className="lg:hidden">
-                    {/* <button x-cloak @click="isOpen = !isOpen" type="button" className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
+              {/* <!-- Mobile menu button --> */}
+              <div className="lg:hidden">
+                {/* <button x-cloak @click="isOpen = !isOpen" type="button" className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
                         <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
                         </svg>
@@ -480,7 +508,7 @@ const Hero = () => {
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button> */}
-                </div>
+              </div>
             </div>
 
             {/* <!-- Mobile Menu open: "block", Menu closed: "hidden" --> */}
@@ -489,33 +517,54 @@ const Hero = () => {
                 <a href="#" className="block px-3 py-2 text-gray-600 rounded-lg dark:text-gray-200 hover:bg-gray-100 lg:mx-2">About</a>
                 <a href="#" className="block px-3 py-2 text-gray-600 rounded-lg dark:text-gray-200 hover:bg-gray-100 lg:mx-2">Contact</a>
             </div> */}
-        </div>
-    </nav>
+          </div>
+        </nav>
 
-    <div className="lg:flex">
-        <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
+        <div className="lg:flex">
+          <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
             <div className="max-w-xl">
-                <h2 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">Build Your New <span className="text-blue-600 dark:text-blue-400">Idea</span></h2>
+              <h2 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
+                Build Your New{" "}
+                <span className="text-blue-600 dark:text-blue-400">Idea</span>
+              </h2>
 
-                <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis commodi cum cupiditate ducimus, fugit harum id necessitatibus odio quam quasi, quibusdam rem tempora voluptates.</p>
+              <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Blanditiis commodi cum cupiditate ducimus, fugit harum id
+                necessitatibus odio quam quasi, quibusdam rem tempora
+                voluptates.
+              </p>
 
-                <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
-                    <a href="#" className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700">Get Started</a>
-                    <a href="#" className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md lg:mx-4 hover:bg-gray-300">Learn More</a>
-                </div>
+              <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
+                <a
+                  href="#"
+                  className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700"
+                >
+                  Get Started
+                </a>
+                <a
+                  href="#"
+                  className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md lg:mx-4 hover:bg-gray-300"
+                >
+                  Learn More
+                </a>
+              </div>
             </div>
-        </div>
+          </div>
 
-        <div className="w-full h-64 lg:w-1/2 lg:h-auto">
-            <div className="w-full h-full bg-cover" style="background-image: url(https://images.unsplash.com/photo-1508394522741-82ac9c15ba69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=748&q=80)">
-                <div className="w-full h-full bg-black opacity-25"></div>
+          <div className="w-full h-64 lg:w-1/2 lg:h-auto">
+            <div
+              className="w-full h-full bg-cover"
+              style="background-image: url(https://images.unsplash.com/photo-1508394522741-82ac9c15ba69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=748&q=80)"
+            >
+              <div className="w-full h-full bg-black opacity-25"></div>
             </div>
+          </div>
         </div>
-    </div>
-</header>
+      </header>
     </>
-  )
-}
+  );
+};
 
 const App = () => {
   return (

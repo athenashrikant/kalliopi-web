@@ -282,7 +282,7 @@ const DownloadLink = () => {
 
     const link = document.createElement("a");
     link.href = fileUrl;
-    link.download = "earwise.apk"; // Specify the filename
+    link.download = "kalliopi.apk"; // Specify the filename
     link.target = "_blank"; // Opens in a new tab or background
     document.body.appendChild(link); // Append to the document
     link.click(); // Programmatically click the link
@@ -294,7 +294,7 @@ const DownloadLink = () => {
       <a
         href={fileUrl} // This is still needed for accessibility
         onClick={handleDownload} // Handle the click event
-        className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 capitalize"
+        className="px-6 py-2 font-medium tracking-wide text-white transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 capitalize"
       >
         Get Kalliopi now
       </a>
